@@ -3,7 +3,19 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/alber/AndroidStudioProjects/Metapigeon/app/src/main/res/layout/activity_main.xml" value="0.5364583333333334" />
+        <entry key="..\:/Users/alber/AndroidStudioProjects/Metapigeon/app/src/main/res/drawable/btngoogle.xml" value="0.497" />
+        <entry key="..\:/Users/alber/AndroidStudioProjects/Metapigeon/app/src/main/res/drawable/emailsize.xml" value="0.497" />
+        <entry key="..\:/Users/alber/AndroidStudioProjects/Metapigeon/app/src/main/res/drawable/googlesize.xml" value="0.497" />
+        <entry key="..\:/Users/alber/AndroidStudioProjects/Metapigeon/app/src/main/res/drawable/infocard.xml" value="0.497" />
+        <entry key="..\:/Users/alber/AndroidStudioProjects/Metapigeon/app/src/main/res/drawable/passwordsize.xml" value="0.497" />
+        <entry key="..\:/Users/alber/AndroidStudioProjects/Metapigeon/app/src/main/res/drawable/roundstyle.xml" value="0.497" />
+        <entry key="..\:/Users/alber/AndroidStudioProjects/Metapigeon/app/src/main/res/drawable/usersize.xml" value="0.497" />
+        <entry key="..\:/Users/alber/AndroidStudioProjects/Metapigeon/app/src/main/res/layout/activity_login.xml" value="0.5364583333333334" />
+        <entry key="..\:/Users/alber/AndroidStudioProjects/Metapigeon/app/src/main/res/layout/activity_main.xml" value="0.4317708333333333" />
+        <entry key="..\:/Users/alber/AndroidStudioProjects/Metapigeon/app/src/main/res/layout/activity_monster.xml" value="0.5364583333333334" />
+        <entry key="..\:/Users/alber/AndroidStudioProjects/Metapigeon/app/src/main/res/layout/activity_monsterbook.xml" value="0.5364583333333334" />
+        <entry key="..\:/Users/alber/AndroidStudioProjects/Metapigeon/app/src/main/res/layout/activity_register.xml" value="0.5364583333333334" />
+        <entry key="..\:/Users/alber/AndroidStudioProjects/Metapigeon/app/src/main/res/layout/activity_spellbook.xml" value="0.5364583333333334" />
       </map>
     </option>
   </component>

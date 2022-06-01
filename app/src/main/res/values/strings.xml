@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">Metapigeon</string>
+    <string name="Login">Login</string>
+    <string name="Email">Email</string>
+    <string name="Password">Password</string>
+    <string name="ForgotPass">Forgot Password?</string>
+    <string name="Google">Login with Google</string>
+    <string name="Account">Don\'t have account? Sign up</string>
+    <string name="Remember">Remember me</string>
+    <string name="Sign">Sign Up</string>
+    <string name="User">Username</string>
+    <string name="Services">I agree with the term of services</string>
+    <string name="LoginHere">Already sign up? Login here</string>
+    <string name="Register">Register</string>
+    <string name="Exit">Exit</string>
 </resources>
