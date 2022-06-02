@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
 
         //Object to set the timeout to 1000 milliseconds
         Timer time = new Timer();
-        time.schedule(task, 1000);
+        time.schedule(task, 7000);
 
     }//onCreate
 
