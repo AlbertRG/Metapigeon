@@ -4,13 +4,135 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/darkslategray"
     tools:context=".SettingsActivity">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Configuraciones"
-        tools:layout_editor_absoluteX="154dp"
-        tools:layout_editor_absoluteY="100dp" />
+    <LinearLayout
+        android:id="@+id/SignUpCard"
+        android:layout_width="413dp"
+        android:layout_height="60dp"
+        android:background="@color/royalblue"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" >
+
+        <Button
+            android:id="@+id/btnReturn"
+            android:layout_width="164dp"
+            android:layout_height="match_parent"
+            android:textAlignment="center"
+            app:icon="@drawable/returnicon" />
+
+        <Button
+            android:id="@+id/btnReturn5"
+            android:layout_width="169dp"
+            android:layout_height="match_parent"
+            android:textAlignment="center"
+            app:icon="@drawable/settings" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="405dp"
+        android:layout_height="399dp"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="61dp">
+
+        <Switch
+            android:id="@+id/swNight"
+            android:layout_width="match_parent"
+            android:layout_height="13dp"
+            android:layout_weight="1"
+            android:drawableStart="@drawable/night"
+            android:text="  Night Mode"
+            android:textColor="@color/gainsboro"
+            android:textSize="20sp"
+            tools:checked="true" />
+
+        <Switch
+            android:id="@+id/swAuto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableStart="@drawable/autospell"
+            android:text="  Auto Add Spell"
+            android:textColor="@color/gainsboro"
+            android:textSize="20sp"
+            tools:checked="true" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableStart="@drawable/world"
+            android:gravity="left|center"
+            android:text="  Changue Language"
+            android:textColor="@color/gainsboro"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableStart="@drawable/star"
+            android:gravity="left|center"
+            android:text="  Rate Our App"
+            android:textColor="@color/gainsboro"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableStart="@drawable/contact"
+            android:gravity="left|center"
+            android:text="  Contact Us"
+            android:textColor="@color/gainsboro"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableStart="@drawable/share"
+            android:gravity="left|center"
+            android:text="  Share with your friends"
+            android:textColor="@color/gainsboro"
+            android:textSize="20sp" />
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="353dp"
+        android:layout_height="106dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnLogout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:layout_constraintVertical_bias="0.611"
+        app:srcCompat="@drawable/ko_fi" />
+
+    <Button
+        android:id="@+id/btnLogout"
+        android:layout_width="301dp"
+        android:layout_height="62dp"
+        android:layout_marginBottom="108dp"
+        android:background="@drawable/roundstyle"
+        android:backgroundTint="@color/royalblue"
+        android:text="Logout"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
