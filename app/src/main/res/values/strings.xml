@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">Metapigeon</string>
+
+    /*Login*/
     <string name="Login">Login</string>
     <string name="Email">Email</string>
     <string name="Password">Password</string>
@@ -7,10 +9,47 @@
     <string name="Google">Login with Google</string>
     <string name="Account">Don\'t have account? Sign up</string>
     <string name="Remember">Remember me</string>
+    <string name="Exit">Exit</string>
+
+    /*SignUp*/
     <string name="Sign">Sign Up</string>
     <string name="User">Username</string>
-    <string name="Services">I agree with the term of services</string>
     <string name="LoginHere">Already sign up? Login here</string>
-    <string name="Register">Register</string>
-    <string name="Exit">Exit</string>
+    <string name="Services">I agree with the term of services</string>
+
+    /*Settings*/
+    <string name="Night">Night Mode</string>
+    <string name="Auto">Auto Add Spells</string>
+    <string name="Language">Change Language</string>
+    <string name="Rate">Rate Our App</string>
+    <string name="Contact">Contact Us</string>
+    <string name="Share">Share with your friends</string>
+    <string name="Kofi">Kofi logo</string>
+    <string name="Logout">Logout</string>
+
+    /*Fragments*/
+    <string name="Search">Search by name</string>
+    <string name="title_activity_menu">MenuActivity</string>
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
+
+    /*Spells*/
+    <string name="Casting">Casting Time:</string>
+    <string name="Range">Range:</string>
+    <string name="Components">Components:</string>
+    <string name="Duration">Duration:</string>
+    <string name="Classes">Classes:</string>
+    <string name="Source">Source:</string>
+
+    /*Monsters*/
+    <string name="AC">Armor Class:</string>
+    <string name="HP">Hit Points:</string>
+    <string name="Speed">Speed:</string>
+    <string name="STR">STR</string>
+    <string name="DEX">DEX</string>
+    <string name="CON">CON</string>
+    <string name="INT">INT</string>
+    <string name="WIS">WIS</string>
+    <string name="CHA">CHA</string>
+
 </resources>

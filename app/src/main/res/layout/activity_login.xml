@@ -20,7 +20,7 @@
         app:srcCompat="@drawable/logoname_color" />
 
     <LinearLayout
-        android:id="@+id/SignUpCard"
+        android:id="@+id/upperMenu"
         android:layout_width="350dp"
         android:layout_height="300dp"
         android:background="@drawable/roundstyle"
@@ -51,7 +51,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginRight="10dp"
             android:background="@drawable/infocard"
-            android:drawableStart="@drawable/emailsize"
+            android:drawableStart="@drawable/email"
             android:drawablePadding="15dp"
             android:ems="10"
             android:hint="@string/Email"
@@ -67,7 +67,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginRight="10dp"
             android:background="@drawable/infocard"
-            android:drawableStart="@drawable/passwordsize"
+            android:drawableStart="@drawable/password"
             android:drawablePadding="15dp"
             android:ems="10"
             android:hint="@string/Password"
@@ -76,7 +76,7 @@
             android:textSize="20sp" />
 
         <TextView
-            android:id="@+id/txtLoginhere"
+            android:id="@+id/txtForgot"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="200dp"
@@ -87,7 +87,9 @@
             android:text="@string/ForgotPass"
             android:textAlignment="textEnd"
             android:textColor="@color/white"
-            android:textSize="14sp" />
+            android:textSize="14sp"
+            android:clickable="true"
+            android:focusable="true"/>
 
         <Button
             android:id="@+id/btnGoogle"
@@ -101,7 +103,7 @@
             android:text="@string/Google"
             android:textAlignment="center"
             app:backgroundTint="@color/darkslategray"
-            app:icon="@drawable/googlesize"
+            app:icon="@drawable/google"
             app:iconTint="@color/royalblue" />
 
     </LinearLayout>
@@ -114,6 +116,7 @@
         android:layout_marginBottom="36dp"
         android:background="@drawable/roundstyle"
         android:backgroundTint="@color/royalblue"
+        android:onClick="Login"
         android:text="@string/Login"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/txtAccount"
@@ -126,6 +129,7 @@
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="36dp"
         android:background="@drawable/roundstyle"
+        android:onClick="Exit"
         android:text="@string/Exit"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/txtAccount"
@@ -142,7 +146,9 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:clickable="true"
+        android:focusable="true"/>
 
     <CheckBox
         android:id="@+id/cbxRemember"
@@ -157,6 +163,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.111"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/SignUpCard" />
+        app:layout_constraintTop_toBottomOf="@+id/upperMenu" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

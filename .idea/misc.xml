@@ -3,19 +3,58 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/alber/AndroidStudioProjects/Metapigeon/app/src/main/res/drawable/add.xml" value="0.5305" />
+        <entry key="..\:/Users/alber/AndroidStudioProjects/Metapigeon/app/src/main/res/drawable/appicon.xml" value="0.5305" />
+        <entry key="..\:/Users/alber/AndroidStudioProjects/Metapigeon/app/src/main/res/drawable/back.xml" value="0.5305" />
         <entry key="..\:/Users/alber/AndroidStudioProjects/Metapigeon/app/src/main/res/drawable/btngoogle.xml" value="0.497" />
+        <entry key="..\:/Users/alber/AndroidStudioProjects/Metapigeon/app/src/main/res/drawable/contact.xml" value="0.497" />
+        <entry key="..\:/Users/alber/AndroidStudioProjects/Metapigeon/app/src/main/res/drawable/divider.xml" value="0.497" />
+        <entry key="..\:/Users/alber/AndroidStudioProjects/Metapigeon/app/src/main/res/drawable/divider_drawable.xml" value="0.497" />
+        <entry key="..\:/Users/alber/AndroidStudioProjects/Metapigeon/app/src/main/res/drawable/editar_24.xml" value="0.388" />
+        <entry key="..\:/Users/alber/AndroidStudioProjects/Metapigeon/app/src/main/res/drawable/email.xml" value="0.5305" />
         <entry key="..\:/Users/alber/AndroidStudioProjects/Metapigeon/app/src/main/res/drawable/emailsize.xml" value="0.497" />
+        <entry key="..\:/Users/alber/AndroidStudioProjects/Metapigeon/app/src/main/res/drawable/filter.xml" value="0.5295" />
+        <entry key="..\:/Users/alber/AndroidStudioProjects/Metapigeon/app/src/main/res/drawable/google.xml" value="0.497" />
         <entry key="..\:/Users/alber/AndroidStudioProjects/Metapigeon/app/src/main/res/drawable/googlesize.xml" value="0.497" />
         <entry key="..\:/Users/alber/AndroidStudioProjects/Metapigeon/app/src/main/res/drawable/infocard.xml" value="0.497" />
+        <entry key="..\:/Users/alber/AndroidStudioProjects/Metapigeon/app/src/main/res/drawable/kofi.xml" value="0.339" />
+        <entry key="..\:/Users/alber/AndroidStudioProjects/Metapigeon/app/src/main/res/drawable/language.xml" value="0.5305" />
+        <entry key="..\:/Users/alber/AndroidStudioProjects/Metapigeon/app/src/main/res/drawable/list_divider.xml" value="0.5295" />
+        <entry key="..\:/Users/alber/AndroidStudioProjects/Metapigeon/app/src/main/res/drawable/logo.xml" value="0.5305" />
+        <entry key="..\:/Users/alber/AndroidStudioProjects/Metapigeon/app/src/main/res/drawable/monster.xml" value="0.5295" />
+        <entry key="..\:/Users/alber/AndroidStudioProjects/Metapigeon/app/src/main/res/drawable/monster50dp.xml" value="0.5305" />
+        <entry key="..\:/Users/alber/AndroidStudioProjects/Metapigeon/app/src/main/res/drawable/mythumb.xml" value="0.497" />
+        <entry key="..\:/Users/alber/AndroidStudioProjects/Metapigeon/app/src/main/res/drawable/mytrack.xml" value="0.21" />
         <entry key="..\:/Users/alber/AndroidStudioProjects/Metapigeon/app/src/main/res/drawable/passwordsize.xml" value="0.497" />
+        <entry key="..\:/Users/alber/AndroidStudioProjects/Metapigeon/app/src/main/res/drawable/returnicon.xml" value="0.497" />
         <entry key="..\:/Users/alber/AndroidStudioProjects/Metapigeon/app/src/main/res/drawable/roundstyle.xml" value="0.497" />
+        <entry key="..\:/Users/alber/AndroidStudioProjects/Metapigeon/app/src/main/res/drawable/search.xml" value="0.5295" />
+        <entry key="..\:/Users/alber/AndroidStudioProjects/Metapigeon/app/src/main/res/drawable/settings.xml" value="0.497" />
+        <entry key="..\:/Users/alber/AndroidStudioProjects/Metapigeon/app/src/main/res/drawable/settingsminiblue.xml" value="0.5305" />
+        <entry key="..\:/Users/alber/AndroidStudioProjects/Metapigeon/app/src/main/res/drawable/spell.xml" value="0.5295" />
+        <entry key="..\:/Users/alber/AndroidStudioProjects/Metapigeon/app/src/main/res/drawable/spell50dp.xml" value="0.5305" />
         <entry key="..\:/Users/alber/AndroidStudioProjects/Metapigeon/app/src/main/res/drawable/usersize.xml" value="0.497" />
+        <entry key="..\:/Users/alber/AndroidStudioProjects/Metapigeon/app/src/main/res/drawable/world.xml" value="0.497" />
         <entry key="..\:/Users/alber/AndroidStudioProjects/Metapigeon/app/src/main/res/layout/activity_login.xml" value="0.5364583333333334" />
         <entry key="..\:/Users/alber/AndroidStudioProjects/Metapigeon/app/src/main/res/layout/activity_main.xml" value="0.5364583333333334" />
+        <entry key="..\:/Users/alber/AndroidStudioProjects/Metapigeon/app/src/main/res/layout/activity_menu.xml" value="0.5076992753623188" />
         <entry key="..\:/Users/alber/AndroidStudioProjects/Metapigeon/app/src/main/res/layout/activity_monster.xml" value="0.5364583333333334" />
         <entry key="..\:/Users/alber/AndroidStudioProjects/Metapigeon/app/src/main/res/layout/activity_monsterbook.xml" value="0.5364583333333334" />
         <entry key="..\:/Users/alber/AndroidStudioProjects/Metapigeon/app/src/main/res/layout/activity_register.xml" value="0.5364583333333334" />
+        <entry key="..\:/Users/alber/AndroidStudioProjects/Metapigeon/app/src/main/res/layout/activity_settings.xml" value="0.5076992753623188" />
+        <entry key="..\:/Users/alber/AndroidStudioProjects/Metapigeon/app/src/main/res/layout/activity_spell.xml" value="0.5364583333333334" />
+        <entry key="..\:/Users/alber/AndroidStudioProjects/Metapigeon/app/src/main/res/layout/activity_spellAlter.xml" value="0.5364583333333334" />
         <entry key="..\:/Users/alber/AndroidStudioProjects/Metapigeon/app/src/main/res/layout/activity_spellbook.xml" value="0.5364583333333334" />
+        <entry key="..\:/Users/alber/AndroidStudioProjects/Metapigeon/app/src/main/res/layout/activity_test.xml" value="0.2608915906788247" />
+        <entry key="..\:/Users/alber/AndroidStudioProjects/Metapigeon/app/src/main/res/layout/customtab.xml" value="1.2875" />
+        <entry key="..\:/Users/alber/AndroidStudioProjects/Metapigeon/app/src/main/res/layout/fragment_main.xml" value="0.5364583333333334" />
+        <entry key="..\:/Users/alber/AndroidStudioProjects/Metapigeon/app/src/main/res/layout/fragment_menu.xml" value="0.5364583333333334" />
+        <entry key="..\:/Users/alber/AndroidStudioProjects/Metapigeon/app/src/main/res/layout/fragment_monsterbook.xml" value="0.5364583333333334" />
+        <entry key="..\:/Users/alber/AndroidStudioProjects/Metapigeon/app/src/main/res/layout/fragment_myspells.xml" value="0.5364583333333334" />
+        <entry key="..\:/Users/alber/AndroidStudioProjects/Metapigeon/app/src/main/res/layout/fragment_spellbook.xml" value="0.5364583333333334" />
+        <entry key="..\:/Users/alber/AndroidStudioProjects/Metapigeon/app/src/main/res/layout/list_divider.xml" value="0.5354166666666667" />
+        <entry key="..\:/Users/alber/AndroidStudioProjects/Metapigeon/app/src/main/res/layout/list_item.xml" value="0.5364583333333334" />
+        <entry key="..\:/Users/alber/AndroidStudioProjects/Metapigeon/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.4245" />
       </map>
     </option>
   </component>

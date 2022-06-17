@@ -20,7 +20,7 @@
         app:srcCompat="@drawable/logoname_color" />
 
     <LinearLayout
-        android:id="@+id/SignUpCard"
+        android:id="@+id/upperMenu"
         android:layout_width="350dp"
         android:layout_height="300dp"
         android:background="@drawable/roundstyle"
@@ -51,11 +51,11 @@
             android:layout_marginTop="10dp"
             android:layout_marginRight="10dp"
             android:background="@drawable/infocard"
-            android:drawableStart="@drawable/usersize"
+            android:drawableStart="@drawable/user"
             android:drawablePadding="15dp"
             android:ems="10"
             android:hint="@string/User"
-            android:inputType="textPassword"
+            android:inputType="textPersonName"
             android:textColor="@color/black"
             android:textSize="20sp" />
 
@@ -67,11 +67,11 @@
             android:layout_marginTop="10dp"
             android:layout_marginRight="10dp"
             android:background="@drawable/infocard"
-            android:drawableStart="@drawable/emailsize"
+            android:drawableStart="@drawable/email"
             android:drawablePadding="15dp"
             android:ems="10"
             android:hint="@string/Email"
-            android:inputType="textPassword"
+            android:inputType="textEmailAddress"
             android:textColor="@color/black"
             android:textSize="20sp" />
 
@@ -83,7 +83,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginRight="10dp"
             android:background="@drawable/infocard"
-            android:drawableStart="@drawable/passwordsize"
+            android:drawableStart="@drawable/password"
             android:drawablePadding="15dp"
             android:ems="10"
             android:hint="@string/Password"
@@ -93,7 +93,7 @@
 
         <TextView
             android:id="@+id/txtLoginhere"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="140dp"
             android:layout_marginTop="10dp"
@@ -103,7 +103,9 @@
             android:text="@string/LoginHere"
             android:textAlignment="textEnd"
             android:textColor="@color/white"
-            android:textSize="14sp" />
+            android:textSize="14sp"
+            android:clickable="true"
+            android:focusable="true"/>
 
     </LinearLayout>
 
@@ -119,7 +121,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.185"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/SignUpCard"
+        app:layout_constraintTop_toBottomOf="@+id/upperMenu"
         app:layout_constraintVertical_bias="0.076" />
 
     <Button
@@ -128,12 +130,14 @@
         android:layout_height="70dp"
         android:layout_marginBottom="116dp"
         android:background="@drawable/roundstyle"
+        android:onClick="signUp"
         android:text="@string/Sign"
         android:textColor="@color/white"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="DuplicateSpeakableTextCheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

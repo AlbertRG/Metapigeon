@@ -2,7 +2,7 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:drawable="@drawable/backblack"
+        android:drawable="@drawable/spellblack"
         android:width="25dp"
         android:height="25dp">
     </item>

@@ -16,5 +16,7 @@
         app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@drawable/logofull_color" />
+        app:srcCompat="@drawable/logofull_color"
+        tools:srcCompat="@drawable/logofull_color"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
