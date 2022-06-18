@@ -3,6 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Ryzen 7/AndroidStudioProjects/Metapigeon/app/src/main/res/layout/activity_login.xml" value="0.1" />
+        <entry key="..\:/Users/Ryzen 7/AndroidStudioProjects/Metapigeon/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/Ryzen 7/AndroidStudioProjects/Metapigeon/app/src/main/res/layout/activity_settings.xml" value="0.17916666666666667" />
         <entry key="..\:/Users/alber/AndroidStudioProjects/Metapigeon/app/src/main/res/drawable/add.xml" value="0.5305" />
         <entry key="..\:/Users/alber/AndroidStudioProjects/Metapigeon/app/src/main/res/drawable/appicon.xml" value="0.5305" />
         <entry key="..\:/Users/alber/AndroidStudioProjects/Metapigeon/app/src/main/res/drawable/back.xml" value="0.5305" />
