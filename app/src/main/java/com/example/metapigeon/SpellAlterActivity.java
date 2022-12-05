@@ -2,12 +2,16 @@ package com.example.metapigeon;
 
 import android.app.Activity;
 import android.content.SharedPreferences;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
+import com.example.metapigeon.ui.main.DBController;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -21,6 +25,7 @@ public class SpellAlterActivity extends AppCompatActivity {
 
     ImageView back, delete;
     TextView name, school, source, time, range, component, duration, classes, description;
+    private DBController admin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +43,8 @@ public class SpellAlterActivity extends AppCompatActivity {
         duration = findViewById(R.id.txtDurationInfo);
         classes = findViewById(R.id.txtClassesInfo);
         description = findViewById(R.id.txtDescriptionSpell);
+
+        admin = new DBController(this,"metapigeonDB",null,1);
 
         back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,59 +75,43 @@ public class SpellAlterActivity extends AppCompatActivity {
             spell= (String) savedInstanceState.getSerializable("SpellSelected");
         }
 
+        Log.i("SpellAlterActivityQueryRequest", spell);
         openSpell(spell);
 
     }//onCreate
 
-    //Validate files within the device
-    private boolean checkFiles (String[] files, String fileSearch){
-        //Loop through the list of files to validate that they exist
-        for (String file : files) {
-            if (fileSearch.equals(file)) {
-                return true;
-            }
-        }
-        return false;
-    }//checkFiles
-
     private void openSpell(String spell) {
-        //Get list of internal files
-        String[] fileList = fileList();
-        //Validate file
-        if( checkFiles(fileList, spell)){
-            try{
-                //Associate file to instance
-                InputStreamReader internalFile = new InputStreamReader(openFileInput(spell));
-                //Instance to read file
-                BufferedReader spellFile = new BufferedReader(internalFile);
-                //Read the content of the file and put it in a variable
-                String line = spellFile.readLine();
-                name.setText(line);
-                line = spellFile.readLine();
-                school.setText(line);
-                line = spellFile.readLine();
-                source.setText(line);
-                line = spellFile.readLine();
-                time.setText(line);
-                line = spellFile.readLine();
-                range.setText(line);
-                line = spellFile.readLine();
-                component.setText(line);
-                line = spellFile.readLine();
-                duration.setText(line);
-                line = spellFile.readLine();
-                classes.setText(line);
-                line = spellFile.readLine();
-                description.setText(line);
 
-                spellFile.close();
-                internalFile.close();
-            } catch (IOException e) {
-                Toast.makeText(getApplicationContext(), "ERROR loading spell",Toast.LENGTH_LONG).show();
-            }
-        } else {
-            Toast.makeText(getApplicationContext(), "ERROR the spell does not exist",Toast.LENGTH_LONG).show();
-        }
+        SQLiteDatabase bd = admin.getReadableDatabase();
+        String[] nameSpell = {spell};
+
+        //name text primary key, school text, source text, time text, range text, component text, duration text, classes text, description text
+        Cursor fila = bd.rawQuery("select * from spells where name = ?", nameSpell);
+
+        fila.moveToFirst();
+        String dbname = fila.getString(0);
+        String dbschool = fila.getString(1);
+        String dbsource = fila.getString(2);
+        String dbtime = fila.getString(3);
+        String dbrange = fila.getString(4);
+        String dbcomponent = fila.getString(5);
+        String dbduration = fila.getString(6);
+        String dbclasses = fila.getString(7);
+        String dbdescription = fila.getString(8);
+        bd.close();
+
+        name.setText(dbname);
+        school.setText(dbschool);
+        source.setText(dbsource);
+        time.setText(dbtime);
+        range.setText(dbrange);
+        component.setText(dbcomponent);
+        duration.setText(dbduration);
+        classes.setText(dbclasses);
+        description.setText(dbdescription);
+
+        Log.i("DB_Select", dbname);
+
     }//openSpell
 
     //Open accountFile inside the device

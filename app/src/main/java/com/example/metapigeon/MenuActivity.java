@@ -2,10 +2,13 @@ package com.example.metapigeon;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Toast;
 import com.google.android.material.tabs.TabLayout;
+import com.google.zxing.integration.android.IntentIntegrator;
+import com.google.zxing.integration.android.IntentResult;
 
 public class MenuActivity extends AppCompatActivity {
 
@@ -13,6 +16,7 @@ public class MenuActivity extends AppCompatActivity {
     TabLayout menu;
     ViewPager fragment;
     MenuController menuCtrl;
+    String registro;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +42,7 @@ public class MenuActivity extends AppCompatActivity {
                     case 0:
                     case 1:
                     case 2:
+                    case 3:
                         menuCtrl.notifyDataSetChanged(); break;
                 }
             }//onTabSelected
@@ -60,5 +65,26 @@ public class MenuActivity extends AppCompatActivity {
         fragment.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(menu));
 
     }//onCreate
+
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        IntentResult intentResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
+        //validar si recibe información
+        if(intentResult != null){
+            //validar si se cancela la lectura se envíe un mensaje
+            if(intentResult.getContents() == null){
+                Toast.makeText(this, "Lectura Cancelada", Toast.LENGTH_SHORT).show();
+            }else{
+                //en caso de no calcelar se envía un mensaje y se envía la información a la caja de texto
+                //Toast.makeText(this, "Datos Leídos", Toast.LENGTH_SHORT).show();
+                registro = intentResult.getContents();
+                Intent intent = new Intent(this, CompActivity.class);
+                intent.putExtra("mycode", registro);
+                startActivity(intent);
+            }
+        }else{
+            super.onActivityResult(requestCode, resultCode, data);
+        }
+    }
 
 }

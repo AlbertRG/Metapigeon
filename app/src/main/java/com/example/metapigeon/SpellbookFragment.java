@@ -13,6 +13,7 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
+import com.example.metapigeon.ui.main.DBController;
 import java.util.Arrays;
 
 public class SpellbookFragment extends Fragment implements AdapterView.OnItemClickListener {
@@ -20,6 +21,7 @@ public class SpellbookFragment extends Fragment implements AdapterView.OnItemCli
     private View vista;
     private EditText search;
     private ImageView settings;
+    private DBController admin;
     ListView listSpells;
     String[] spells;
     Intent intent;
@@ -56,6 +58,7 @@ public class SpellbookFragment extends Fragment implements AdapterView.OnItemCli
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         vista = inflater.inflate(R.layout.fragment_spellbook, container, false);
+        admin = new DBController(getActivity(),"metapigeonDB",null,1);
 
         listSpells = vista.findViewById(R.id.lvwSpells);
         spells = new String[]{"Fireball", "Toll the Dead", "Shield", "Dimension Door", "Silvery Barbs", "Spiritual Weapon", "Booming Blade", "Mage Hand", "Mage Armor", "Danse Macabre", "Scorching Ray", "Mirror Image", "Blur"};
@@ -98,9 +101,8 @@ public class SpellbookFragment extends Fragment implements AdapterView.OnItemCli
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
         String spell = listSpells.getItemAtPosition(i).toString();
-        //Toast.makeText(getActivity(), "Spell: " + spell, Toast.LENGTH_LONG).show();
         intent = new Intent(getActivity(), SpellActivity.class);
-        intent.putExtra("SpellSelected",spell.trim() + ".txt");
+        intent.putExtra("SpellSelected",spell.trim());
         startActivity(intent);
     }
 

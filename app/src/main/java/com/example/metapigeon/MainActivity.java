@@ -1,23 +1,30 @@
 package com.example.metapigeon;
 
 import androidx.appcompat.app.AppCompatActivity;
-import android.app.Activity;
+import android.content.ContentValues;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
+import android.database.SQLException;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.widget.Toast;
-import java.io.IOException;
-import java.io.OutputStreamWriter;
+import android.util.Log;
+import com.example.metapigeon.ui.main.DBController;
 import java.util.Timer;
 import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity {
 
+    private DBController admin;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        // Create files where the main information of the application will be saved
+
+        admin = new DBController(this,"metapigeonDB",null,1);
+
+        // Insert info into database
         //-------------------------------------------------------------------------------------------SPELLBOOK DATABASE-------------------------------------------------------------------------------------------------------------------
         createSpell("Shield","1st-level abjuration","PHB, page 275","1 reaction, which you take when you are hit by an attack or targeted by the magic missile spell",
                 "Self","V, S","1 round","Sorcerer, Wizard","An invisible barrier of magical force appears and protects you. Until the start of your next turn, you have a +5 bonus to AC, including against the triggering attack, and you take no damage from magic missile.");
@@ -87,10 +94,10 @@ public class MainActivity extends AppCompatActivity {
 
                 if(loginData()){
                     //If you decided to save your login information
-                    intent = new Intent(MainActivity.this, MenuActivity.class);
+                    intent = new Intent(getApplicationContext(), IntroActivity.class);
                 } else {
                     //If you are not registered or simply did not want to save your login information
-                    intent = new Intent(MainActivity.this, LoginActivity.class);
+                    intent = new Intent(getApplicationContext(), LoginActivity.class);
                 }
                 //Run the corresponding Activity and delete the current Activity
                 startActivity(intent);
@@ -115,50 +122,139 @@ public class MainActivity extends AppCompatActivity {
 
     private void createSpell(String name, String school, String source, String time, String range, String component, String duration, String classes , String description) {
 
-        String spellFile = name.trim() + ".txt";
-        String[] fileList = fileList();
+        if(searchSpell(name)){
 
-        //Check if the file already exists, if it already exists nothing is done
-        if( !checkFiles(fileList, spellFile)){
-            try{
-                OutputStreamWriter internalFile = new OutputStreamWriter(openFileOutput(spellFile, Activity.MODE_PRIVATE));
-                internalFile.write(name + "\n" + school + "\n" + source + "\n" + time + "\n" + range + "\n" + component + "\n" + duration + "\n" + classes + "\n" + description);
-                internalFile.flush();
-                internalFile.close();
-                Toast.makeText(getApplicationContext(), "Database Updated", Toast.LENGTH_LONG).show();
-            } catch(IOException e) {
-                Toast.makeText(getApplicationContext(), "ERROR creating spell", Toast.LENGTH_LONG).show();
+            Log.i("spellFound", name);
+
+        } else {
+
+            SQLiteDatabase bd = admin.getWritableDatabase();
+
+            //Objeto que almacena los valores para enviar a la tabla
+            ContentValues registro = new ContentValues();
+
+            //Referencias a los datos que pasar a la BD indicando como parámetos de put el nombre del campo y el valor a insertar
+            registro.put("name", name);
+            registro.put("school", school);
+            registro.put("source", source);
+            registro.put("time", time);
+            registro.put("range", range);
+            registro.put("component", component);
+            registro.put("duration", duration);
+            registro.put("classes", classes);
+            registro.put("description", description);
+
+            if (bd != null) {
+
+                //Almacenar los valores en la tabla
+                long x = 0;
+                try {
+                    x = bd.insert("spells", null, registro);
+                } catch (SQLException e) {
+                    Log.e("Exception", "Error: " + String.valueOf(e.getMessage()));
+                }
+
+                //Cerrar la base de datos
+                bd.close();
+
+                //Confirmar la operación realizada
+                Log.i("DB_Insert", name);
+
             }
+
         }
+
     }//createSpell
 
     private void createMonster(String name, String type, String ac, String hp, String speed, String str, String dex, String con, String intel, String wis, String cha) {
 
-        String monsterFile = name + ".txt";
-        String[] fileList = fileList();
+        if(searchMonster(name)){
 
-        //Check if the file already exists, if it already exists nothing is done
-        if( !checkFiles(fileList, monsterFile)){
-            try{
-                OutputStreamWriter internalFile = new OutputStreamWriter(openFileOutput(monsterFile, Activity.MODE_PRIVATE));
-                internalFile.write(name + "\n" + type + "\n" + ac + "\n" + hp + "\n" + speed + "\n" + str + "\n" + dex + "\n" + con + "\n" + intel + "\n" + wis +"\n" + cha);
-                internalFile.flush();
-                internalFile.close();
-            } catch(IOException e) {
-                Toast.makeText(getApplicationContext(), "ERROR creating monster", Toast.LENGTH_LONG).show();
+            Log.i("monsterFound", name);
+
+        }else {
+
+            SQLiteDatabase bd = admin.getWritableDatabase();
+            ContentValues registro = new ContentValues();
+
+            //Referencias a los datos que pasar a la BD indicando como parámetos de put el nombre del campo y el valor a insertar
+            registro.put("name", name);
+            registro.put("type", type);
+            registro.put("ac", ac);
+            registro.put("hp", hp);
+            registro.put("speed", speed);
+            registro.put("str", str);
+            registro.put("dex", dex);
+            registro.put("con", con);
+            registro.put("intel", intel);
+            registro.put("wis", wis);
+            registro.put("cha", cha);
+
+            if (bd != null) {
+
+                //Almacenar los valores en la tabla
+                long x = 0;
+                try {
+                    x = bd.insert("monsters", null, registro);
+                } catch (SQLException e) {
+                    Log.e("Exception", "Error: " + String.valueOf(e.getMessage()));
+                }
+
+                //Cerrar la base de datos
+                bd.close();
+
+                //Confirmar la operación realizada
+                Log.i("DB_Insert", name);
+
             }
         }
+
     }//createMonster
 
-    //Validate files within the device
-    private boolean checkFiles (String[] filesList, String fileSearch){
-        //Loop through the list of files to validate that they exist
-        for (String file : filesList) {
-            if (fileSearch.equals(file)) {
-                return true;
-            }
-        }
-        return false;
-    }//checkFiles
+    private boolean searchSpell(String name){
 
-}//class
+        SQLiteDatabase bd = admin.getReadableDatabase();
+        String[] spell = {name};
+
+        //Objeto apunta al registro donde localice el dato, se le envia la instrucción sql de busqueda
+        Cursor fila = bd.rawQuery("SELECT name FROM spells WHERE name = ?", spell);
+
+        //Valida
+        if (fila.moveToFirst()){
+
+            bd.close();
+            return(true);
+
+        } else {
+
+            bd.close();
+            return(false);
+
+        }
+
+    }//searchSpell
+
+    private boolean searchMonster(String name){
+
+        SQLiteDatabase bd = admin.getReadableDatabase();
+        String[] monster = {name};
+
+        //Objeto apunta al registro donde localice el dato, se le envia la instrucción sql de busqueda
+        Cursor fila = bd.rawQuery("select name from monsters where name = ?", monster);
+
+        //Valida
+        if (fila.moveToFirst()){
+
+            bd.close();
+            return(true);
+
+        } else {
+
+            bd.close();
+            return(false);
+
+        }
+
+    }//searchMonster
+
+}//MainActivity

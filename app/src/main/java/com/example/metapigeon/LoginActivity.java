@@ -3,15 +3,16 @@ package com.example.metapigeon;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import com.example.metapigeon.ui.main.DBController;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -19,11 +20,14 @@ public class LoginActivity extends AppCompatActivity {
     private EditText email, password;
     private CheckBox remember;
     private Intent intent;
+    private DBController admin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        admin = new DBController(this,"metapigeonDB",null,1);
 
         //Associate instances with graphic components
         email = findViewById(R.id.txtEmail);
@@ -60,59 +64,68 @@ public class LoginActivity extends AppCompatActivity {
         finishAffinity();
     }
 
-    //Validate files within the device
-    private boolean checkFiles (String[] filesList, String fileSearch){
-        //Loop through the list of files to validate that they exist
-        for (String file : filesList) {
-            if (fileSearch.equals(file)) {
-                return true;
-            }
-        }
-        return false;
-    }//checkFiles
-
-    //Open accountFile inside the device
     private void openAccount() {
-        //Get list of internal files
-        String[] fileList = fileList();
-        String accountFile = email.getText().toString().trim() + ".txt";
-        //Validate file
-        if(checkFiles(fileList, accountFile)){
-            try{
-                //Associate file to instance
-                InputStreamReader internalFile = new InputStreamReader(openFileInput(accountFile));
-                //Instance to read file
-                BufferedReader FileReader = new BufferedReader(internalFile);
-                //Read the content of the file and put it in a variable
-                String line = FileReader.readLine();
-                String email = line;
-                line = FileReader.readLine();
-                String password = line;
-                line = FileReader.readLine();
-                String username = line;
-                //Compare file info vs components info
-                if(email.equals(this.email.getText().toString().trim()) && password.equals(this.password.getText().toString().trim())){
-                    //Toast.makeText(getApplicationContext(), "Login",Toast.LENGTH_SHORT).show();
-                    savePreferencesNeeded(email, username);
-                    //Save preferences if user selects it
-                    if(remember.isChecked()){
-                        savePreferences(password);
-                    }
-                    intent = new Intent(getApplicationContext(), MenuActivity.class);
-                    startActivity(intent);
-                    finish();
-                } else {
-                    Toast.makeText(getApplicationContext(), "Email or Password incorrect",Toast.LENGTH_LONG).show();
+
+        String accountEmail = email.getText().toString().trim();
+
+        if(searchAccount(accountEmail)){
+
+            SQLiteDatabase bd = admin.getReadableDatabase();
+            String[] userEmail = {accountEmail};
+
+            Cursor fila = bd.rawQuery("select username, password from users where email = ?", userEmail);
+
+            fila.moveToFirst();
+            String username = fila.getString(0);
+            String password = fila.getString(1);
+            bd.close();
+
+            //Compare database info vs components info
+            if(password.equals(this.password.getText().toString().trim())){
+
+                Log.i("Login Correct",  accountEmail);
+
+                savePreferencesNeeded(accountEmail, username);
+
+                //Save preferences if user selects it
+                if(remember.isChecked()){
+                    savePreferences(password);
                 }
-                FileReader.close();
-                internalFile.close();
-            } catch (IOException e) {
-                Toast.makeText(getApplicationContext(), "ERROR login",Toast.LENGTH_LONG).show();
+
+                intent = new Intent(getApplicationContext(), IntroActivity.class);
+                startActivity(intent);
+                finish();
+
+            } else {
+                Toast.makeText(getApplicationContext(), "Email or Password incorrect",Toast.LENGTH_SHORT).show();
             }
+
         } else {
-            Toast.makeText(getApplicationContext(), "ERROR the account does not exist",Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "ERROR the account does not exist",Toast.LENGTH_SHORT).show();
         }
+
     }//openAccount
+
+    private boolean searchAccount(String email){
+
+        SQLiteDatabase bd = admin.getReadableDatabase();
+        String[] userEmail = {email};
+
+        Cursor fila = bd.rawQuery("select * from users where email = ?", userEmail);
+
+        if (fila.moveToFirst()){
+
+            bd.close();
+            return(true);
+
+        } else {
+
+            bd.close();
+            return(false);
+
+        }
+
+    }//searchAccount
 
     private void savePreferences (String password){
         //Create object to store username and password information
@@ -132,4 +145,4 @@ public class LoginActivity extends AppCompatActivity {
         edit.apply();
     }//savePreferencesNeeded
 
-}//class
+}//LoginActivity

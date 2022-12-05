@@ -129,6 +129,7 @@
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="36dp"
         android:background="@drawable/roundstyle"
+        android:backgroundTint="@color/royalblue"
         android:onClick="Exit"
         android:text="@string/Exit"
         android:textSize="20sp"

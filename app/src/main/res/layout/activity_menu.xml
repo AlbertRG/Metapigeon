@@ -46,6 +46,12 @@
             android:layout_height="wrap_content"
             android:icon="@drawable/mylist" />
 
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/tabScan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:icon="@android:drawable/ic_input_get" />
+
     </com.google.android.material.tabs.TabLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

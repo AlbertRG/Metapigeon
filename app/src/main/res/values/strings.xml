@@ -17,6 +17,11 @@
     <string name="LoginHere">Already sign up? Login here</string>
     <string name="Services">I agree with the term of services</string>
 
+    /*Intro*/
+    <string name="Intro">What is a role playing game?</string>
+    <string name="DontShow">Dont Show this again</string>
+    <string name="Continue">Continue</string>
+
     /*Settings*/
     <string name="Night">Night Mode</string>
     <string name="Auto">Auto Add Spells</string>
@@ -51,5 +56,7 @@
     <string name="INT">INT</string>
     <string name="WIS">WIS</string>
     <string name="CHA">CHA</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

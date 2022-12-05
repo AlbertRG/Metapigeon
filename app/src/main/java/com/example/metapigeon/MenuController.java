@@ -21,6 +21,7 @@ public class MenuController extends FragmentPagerAdapter {
         switch (position){
             case 1: return new MonsterbookFragment();
             case 2: return new MySpellsFragment();
+            case 3: return new BooksFragment();
             default: return new SpellbookFragment();
         }
     }//getItem

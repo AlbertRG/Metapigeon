@@ -128,7 +128,7 @@ public class MySpellsFragment extends Fragment implements AdapterView.OnItemClic
         String spell = mySpellList.getItemAtPosition(i).toString();
         //Toast.makeText(getActivity(), "Spell: " + spell, Toast.LENGTH_LONG).show();
         intent = new Intent(getActivity(), SpellAlterActivity.class);
-        intent.putExtra("SpellSelected",spell.trim() + ".txt");
+        intent.putExtra("SpellSelected",spell.trim());
         startActivity(intent);
     }
 
@@ -167,7 +167,7 @@ public class MySpellsFragment extends Fragment implements AdapterView.OnItemClic
                 Toast.makeText(getActivity(), "ERROR getting spells",Toast.LENGTH_LONG).show();
             }
         } else {
-            Toast.makeText(getActivity(), "Please add a spell",Toast.LENGTH_LONG).show();
+            //Toast.makeText(getActivity(), "Please add a spell",Toast.LENGTH_LONG).show();
         }
     }//getMySpells
 

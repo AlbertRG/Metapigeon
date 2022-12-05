@@ -100,7 +100,7 @@ public class MonsterbookFragment extends Fragment implements AdapterView.OnItemC
         String monster = listMonsters.getItemAtPosition(i).toString();
         //Toast.makeText(getActivity(), "Spell: " + spell, Toast.LENGTH_LONG).show();
         intent = new Intent(getActivity(), MonsterActivity.class);
-        intent.putExtra("MonsterSelected",monster.trim() + ".txt");
+        intent.putExtra("MonsterSelected",monster.trim());
         startActivity(intent);
     }
 
