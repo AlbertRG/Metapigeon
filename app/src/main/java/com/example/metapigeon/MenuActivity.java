@@ -1,6 +1,9 @@
 package com.example.metapigeon;
 
+import static com.example.metapigeon.SpellActivity.NOTIFICACION_ID;
+
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.viewpager.widget.ViewPager;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -27,10 +30,26 @@ public class MenuActivity extends AppCompatActivity {
         menu = findViewById(R.id.tabLayout);
         fragment = findViewById(R.id.vwpFragment);
 
+        String menuFragment = getIntent().getStringExtra("option");
+
         //An instance of the menu controller is created
         menuCtrl = new MenuController(getSupportFragmentManager(), menu.getTabCount());
         //It establishes who controls the change of options
         fragment.setAdapter(menuCtrl);
+
+        if(menuFragment != null){
+            //Eliminar la notificación de barra de estado
+            NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(getApplicationContext());
+            notificationManagerCompat.cancel(NOTIFICACION_ID);
+
+            if (menuFragment.equals("2")) {
+                fragment.setCurrentItem(2);
+                menuCtrl.getItem(2);
+                TabLayout.Tab tab = menu.getTabAt(2);
+                tab.select();
+            }
+        }
+
         //A listener is created for the menu, which allows defining action by tab
         menu.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override

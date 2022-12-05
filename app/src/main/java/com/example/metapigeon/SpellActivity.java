@@ -1,19 +1,27 @@
 package com.example.metapigeon;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import android.app.Activity;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.app.TaskStackBuilder;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
+import android.graphics.Color;
+import android.os.Build;
 import com.example.metapigeon.ui.main.DBController;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -24,6 +32,10 @@ public class SpellActivity extends AppCompatActivity {
     ImageView back, add;
     TextView name, school, source, time, range, component, duration, classes, description;
     private DBController admin;
+    private PendingIntent pendingIntentSi;
+    private PendingIntent pendingIntentNo;
+    private final static String CHANNEL_ID = "NOTIFICACION";
+    public final static int NOTIFICACION_ID = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -124,7 +136,10 @@ public class SpellActivity extends AppCompatActivity {
                 internalFile.write(spell);
                 internalFile.flush();
                 internalFile.close();
-                Toast.makeText(getApplicationContext(), spell + " added", Toast.LENGTH_SHORT).show();
+                setPendingIntentNo();
+                setPendingIntentSi();
+                crearCanalNotificacion();
+                crearNotificacion(spell + " added");
             } catch(IOException e) {
                 Toast.makeText(getApplicationContext(), "ERROR adding spell", Toast.LENGTH_LONG).show();
             }
@@ -153,7 +168,10 @@ public class SpellActivity extends AppCompatActivity {
                 internalFileWriter.write(spell);
                 internalFileWriter.flush();
                 internalFileWriter.close();
-                Toast.makeText(getApplicationContext(), spell + " added", Toast.LENGTH_SHORT).show();
+                setPendingIntentNo();
+                setPendingIntentSi();
+                crearCanalNotificacion();
+                crearNotificacion(spell + " added");
             } catch(IOException e) {
                 Toast.makeText(getApplicationContext(), "ERROR adding spell", Toast.LENGTH_LONG).show();
             }
@@ -170,5 +188,62 @@ public class SpellActivity extends AppCompatActivity {
         }
         return false;
     }//checkFiles
+
+    private void setPendingIntentSi() {
+        Intent intent1 = new Intent(SpellActivity.this, MenuActivity.class);
+        intent1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent1.putExtra("option", "2");
+        TaskStackBuilder stackBuilder1 = TaskStackBuilder.create(this);
+        stackBuilder1.addParentStack(MenuActivity.class);
+        stackBuilder1.addNextIntent(intent1);
+        pendingIntentSi = stackBuilder1.getPendingIntent(1, PendingIntent.FLAG_UPDATE_CURRENT);
+    }//setPendingIntentSi
+
+    private void setPendingIntentNo() {
+        Intent intent = new Intent(SpellActivity.this, MainActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.putExtra("option", "0");
+        TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);
+        stackBuilder.addParentStack(MainActivity.class);
+        stackBuilder.addNextIntent(intent);
+        pendingIntentNo = stackBuilder.getPendingIntent(1, PendingIntent.FLAG_UPDATE_CURRENT);
+    }//setPendingIntentNo
+
+    //Mètodo parar definir el canal de comunicación para enviar la notificación
+    private void crearCanalNotificacion() {
+        //Validar si es versiòn Android superior a O (API >=26 )
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+            //Nombre del canal
+            CharSequence name = "Notificación";
+            //Instancia para gestionar el canal y el servicio de la notificación
+            NotificationChannel notificationChannel = new
+                    NotificationChannel(CHANNEL_ID, name,
+                    NotificationManager.IMPORTANCE_DEFAULT);
+            NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+            notificationManager.createNotificationChannel(notificationChannel);
+        }//if
+    }//crearCanalNotificacion
+
+    private void crearNotificacion(String message) {
+        //Instancia para generar la notificaciòn, especificando el contexto de la aplicación y el canal de comunicación
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(getApplicationContext(),CHANNEL_ID);
+        //Características a incluir en la notificación
+        builder.setSmallIcon(R.drawable.spell);
+        builder.setContentTitle(message);
+        builder.setContentText("Do you want to see your current spells?");
+        builder.setColor(Color.BLUE);
+        builder.setPriority(NotificationCompat.PRIORITY_DEFAULT);
+        builder.setLights(Color.RED, 1000,1000);
+        builder.setVibrate(new long[]{1000,1000,1000,1000,1000});
+        builder.setDefaults(Notification.DEFAULT_SOUND);
+        //Especifica la Activity que aparece al momento de elegir la notificación
+        builder.setContentIntent(pendingIntentSi);
+        //Se agregan las opciones que aparecen en la notificación
+        builder.addAction(R.drawable.ic_thumb_up_black_24dp,"Yes",pendingIntentSi);
+        builder.addAction(R.drawable.ic_thumb_down_black_24dp,"No",pendingIntentNo);
+        //Instancia que gestiona la notificación con el dispositivo
+        NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(getApplicationContext());
+        notificationManagerCompat.notify(NOTIFICACION_ID, builder.build());
+    }//crearNotificacion
 
 }
